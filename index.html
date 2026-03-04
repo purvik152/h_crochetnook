@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h_crochetnook – Handmade Crochet Creations</title>
+    <meta name="description"
+        content="Discover beautiful handmade crochet creations by Hinesha Shingala – bags, blankets, amigurumi, hats and more. Shop unique artisan crochet items from Surat, Gujarat." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ===== NAV ===== -->
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="brand">
+                <span class="brand-icon">🧶</span>
+                <span class="brand-name">h_crochetnook</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#featured">Featured</a>
+                <a href="#shop">Shop</a>
+                <a href="#categories">Categories</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="admin.html" class="btn-admin">Admin Panel ⚙️</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#hero">Home</a>
+            <a href="#featured">Featured</a>
+            <a href="#shop">Shop</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+            <a href="admin.html">Admin Panel ⚙️</a>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-slides-wrapper">
+            <div class="hero-slide active" style="background-image: url('images/hero.png')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-tag">Handcrafted with Love</p>
+                    <h1 class="hero-title">Beautiful Crochet<br><em>Creations</em></h1>
+                    <p class="hero-sub">Each piece uniquely made — bags, blankets, amigurumi & more</p>
+                    <div class="hero-btns">
+                        <a href="#shop" class="btn-primary">Shop Now</a>
+                        <a href="#about" class="btn-ghost">Our Story</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('images/blanket.png')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-tag">New Collection</p>
+                    <h1 class="hero-title">Cozy Crochet<br><em>Blankets</em></h1>
+                    <p class="hero-sub">Warm, colourful granny-square throws for every home</p>
+                    <div class="hero-btns">
+                        <a href="#shop" class="btn-primary">Explore</a>
+                        <a href="#featured" class="btn-ghost">See Featured</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('images/amigurumi.png')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-tag">Fan Favourite</p>
+                    <h1 class="hero-title">Adorable<br><em>Amigurumi</em></h1>
+                    <p class="hero-sub">Cute handmade animals & characters — perfect gifts</p>
+                    <div class="hero-btns">
+                        <a href="#shop" class="btn-primary">Shop Toys</a>
+                        <a href="#about" class="btn-ghost">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="hero-arrow hero-prev" id="heroPrev">&#8592;</button>
+        <button class="hero-arrow hero-next" id="heroNext">&#8594;</button>
+        <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <!-- ===== STATS STRIP ===== -->
+    <div class="stats-strip">
+        <div class="stat"><span class="stat-num" data-target="50">0</span>+ Items Sold</div>
+        <div class="stat"><span class="stat-num" data-target="50">0</span>+ Happy Customers</div>
+        <div class="stat"><span class="stat-num" data-target="2">0</span>+ Years of Craft</div>
+        <div class="stat"><span class="stat-num" data-target="100">0</span>% Handmade</div>
+    </div>
+
+    <!-- ===== FEATURED CAROUSEL ===== -->
+    <section class="section" id="featured">
+        <div class="section-header">
+            <h2 class="section-title">Featured Creations</h2>
+            <p class="section-sub">Hand-picked favourites from our collection</p>
+        </div>
+        <div class="carousel-wrapper">
+            <button class="carousel-arrow c-prev" id="featPrev">&#8592;</button>
+            <div class="carousel-track-outer">
+                <div class="carousel-track" id="featTrack"></div>
+            </div>
+            <button class="carousel-arrow c-next" id="featNext">&#8594;</button>
+        </div>
+        <div class="carousel-dots" id="featDots"></div>
+    </section>
+
+    <!-- ===== CATEGORY SECTION ===== -->
+    <section class="section cat-section" id="categories">
+        <div class="section-header">
+            <h2 class="section-title">Shop by Category</h2>
+            <p class="section-sub">Find exactly what you love</p>
+        </div>
+        <div class="cat-grid" id="catGrid">
+            <!-- populated by JS -->
+        </div>
+    </section>
+
+    <!-- ===== ALL ITEMS SHOP ===== -->
+    <section class="section shop-section" id="shop">
+        <div class="section-header">
+            <h2 class="section-title">Our Shop</h2>
+            <p class="section-sub">Browse all handmade items</p>
+        </div>
+        <div class="filter-bar">
+            <button class="filter-btn active" data-cat="All" id="filterAll">All</button>
+            <!-- Dynamic buttons added by JS -->
+        </div>
+        <div class="product-grid" id="productGrid">
+            <!-- populated by JS -->
+        </div>
+        <div class="empty-state" id="emptyState" style="display:none;">
+            <p>🧶 No items yet. Check back soon!</p>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section about-section" id="about">
+        <div class="about-img-col">
+            <img src="images/hat.png" alt="Handmade crochet hat" class="about-img" />
+        </div>
+        <div class="about-text-col">
+            <p class="section-tag">Our Story</p>
+            <h2 class="about-title">Made with Every Stitch of Love</h2>
+            <p class="about-desc">h_crochetnook was born from a simple passion — the rhythmic dance of yarn and hook.
+                Each
+                item we create is a labour of love, made by hand using quality materials that feel as good as they look.
+            </p>
+            <p class="about-desc">Whether it's a cosy blanket for your living room or a whimsical amigurumi for a little
+                one, every creation tells a story of patience, skill, and warmth.</p>
+            <div class="about-badges">
+                <div class="badge">🌿 Eco Yarn</div>
+                <div class="badge">✂️ Handcrafted</div>
+                <div class="badge">💝 Made with Love</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MEET THE MAKER ===== -->
+    <section class="owner-section" id="maker">
+        <div class="owner-inner">
+            <div class="owner-img-wrap">
+                <div class="owner-img-ring"></div>
+                <img src="images/owner.jpg" alt="Hinesha Shingala – Founder of h_crochetnook" class="owner-img" />
+                <div class="owner-yarn-tag">🧶 Founder</div>
+            </div>
+            <div class="owner-content">
+                <p class="section-tag" style="color:var(--clr-blush);">Meet the Maker</p>
+                <h2 class="owner-title">Hi, I'm <em>Hinesha</em> —<br>your maker from Surat 🌸</h2>
+                <div class="owner-quote-block">
+                    <span class="owner-quote-mark">"</span>
+                    <p class="owner-quote">I'm a student by day and a crocheter by heart. What started as a hobby to
+                        de-stress between lectures turned into something I genuinely love — creating little handmade
+                        pieces that make people smile. h_crochetnook is my small dream, stitched together one loop at a
+                        time.</p>
+                </div>
+                <p class="owner-bio">Based in Surat, Gujarat, I run h_crochetnook as a small home-based business
+                    alongside
+                    my studies. Every item you see here is made by my own hands — no factories, no shortcuts. From
+                    amigurumi animals to cosy blankets, each piece is crafted with patience, passion, and a whole lot of
+                    love. Thank you for supporting a student's small business! 💝</p>
+                <div class="owner-sig-row">
+                    <div class="owner-sig">
+                        <p class="owner-sig-name">Hinesha Shingala 🤍</p>
+                        <p class="owner-sig-title">Founder &amp; Chief Crocheter, h_crochetnook · Surat, Gujarat</p>
+                    </div>
+                    <div class="owner-stats-mini">
+                        <div class="owner-stat"><span>🎓</span>Student</div>
+                        <div class="owner-stat"><span>100+</span>Items Made</div>
+                        <div class="owner-stat"><span>100%</span>Handmade</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS CAROUSEL ===== -->
+    <section class="section testimonial-section">
+        <div class="section-header">
+            <h2 class="section-title">What Our Customers Say</h2>
+        </div>
+        <div class="testi-carousel">
+            <div class="testi-track" id="testiTrack">
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"The blanket I ordered is absolutely gorgeous. The colours are exactly as
+                        shown and the quality is impeccable. Will definitely order again!"</p>
+                    <p class="testi-name">— Priya S.</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"I got an amigurumi bunny for my daughter's birthday — she absolutely loves
+                        it. The craftsmanship is incredible!"</p>
+                    <p class="testi-name">— Meera R.</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">"The crochet bag I purchased gets SO many compliments everywhere I go. Truly
+                        one-of-a-kind quality."</p>
+                    <p class="testi-name">— Ananya K.</p>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars">★★★★☆</div>
+                    <p class="testi-text">"Quick dispatch and beautifully packaged. The hat fits perfectly and looks
+                        even better in person!"</p>
+                    <p class="testi-name">— Sneha P.</p>
+                </div>
+            </div>
+            <button class="carousel-arrow c-prev" id="testiPrev">&#8592;</button>
+            <button class="carousel-arrow c-next" id="testiNext">&#8594;</button>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="brand-icon">🧶</span>
+                <span class="brand-name">h_crochetnook</span>
+                <p class="footer-tag">Handmade with ❤️ by Hinesha</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#hero">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#about">About</a>
+                <a href="#categories">Categories</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>📧 hineshashingala105@gmail.com</p>
+                <p>📱 +91 93167 80131</p>
+                <p>📍 Surat, Gujarat, India</p>
+            </div>
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-btn">📘 Facebook</a>
+                    <a href="https://www.instagram.com/h_crochetnook?igsh=MXV2OHg5OTFzdThwMA==" class="social-btn"
+                        target="_blank" rel="noopener">📸 Instagram</a>
+                    <a href="#" class="social-btn">📌 Pinterest</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 h_crochetnook by Hinesha Shingala. All rights reserved. Handcrafted with 🧶 in Surat, Gujarat.</p>
+        </div>
+    </footer>
+
+
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

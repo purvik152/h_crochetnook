@@ -1,0 +1,18 @@
+Server running on http://localhost:5000
+MongoDB connection error: MongoParseError: options usenewurlparser, useunifiedtopology are not supported
+    at parseOptions (C:\Users\dell\Desktop\chrochet\node_modules\mongodb\lib\connection_string.js:272:15)
+    at new MongoClient (C:\Users\dell\Desktop\chrochet\node_modules\mongodb\lib\mongo_client.js:67:61)
+    at NativeConnection.createClient (C:\Users\dell\Desktop\chrochet\node_modules\mongoose\lib\drivers\node-mongodb-native\connection.js:334:14)
+    at NativeConnection.openUri (C:\Users\dell\Desktop\chrochet\node_modules\mongoose\lib\connection.js:1075:34)
+    at Mongoose.connect (C:\Users\dell\Desktop\chrochet\node_modules\mongoose\lib\mongoose.js:471:15)
+    at Object.<anonymous> (C:\Users\dell\Desktop\chrochet\server.js:17:10)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+    at Object..js (node:internal/modules/cjs/loader:1706:10)
+    at Module.load (node:internal/modules/cjs/loader:1289:32)
+    at Function._load (node:internal/modules/cjs/loader:1108:12) {
+  errorLabelSet: Set(0) {}
+}
+GET /api/products error: MongooseError: Operation `products.find()` buffering timed out after 10000ms
+    at Timeout._onTimeout (C:\Users\dell\Desktop\chrochet\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:131:25)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
