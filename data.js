@@ -6,6 +6,10 @@
 const DataService = (() => {
   const KEY = 'stitchcraft_items';
 
+  const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api/products'
+    : 'https://h-crochetnook.vercel.app/api/products';
+
   const DEFAULT_ITEMS = [
     {
       id: 'item_001',
@@ -81,7 +85,7 @@ const DataService = (() => {
 
   async function getAll() {
     try {
-      const res = await fetch('http://localhost:5000/api/products');
+      const res = await fetch(API_BASE);
       if (!res.ok) throw new Error('Failed to fetch data');
       const items = await res.json();
 
@@ -89,7 +93,7 @@ const DataService = (() => {
       if (items.length === 0) {
         console.log('Database empty. Seeding defaults...');
         for (let item of DEFAULT_ITEMS) {
-          await fetch('http://localhost:5000/api/products', {
+          await fetch(API_BASE, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(item)
@@ -108,7 +112,7 @@ const DataService = (() => {
 
   async function addItem(item) {
     const newItem = { ...item, id: 'item_' + Date.now() };
-    const res = await fetch('http://localhost:5000/api/products', {
+    const res = await fetch(API_BASE, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newItem)
@@ -117,7 +121,7 @@ const DataService = (() => {
   }
 
   async function updateItem(id, data) {
-    const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+    const res = await fetch(`${API_BASE}/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -126,12 +130,12 @@ const DataService = (() => {
   }
 
   async function deleteItem(id) {
-    await fetch(`http://localhost:5000/api/products/${id}`, { method: 'DELETE' });
+    await fetch(`${API_BASE}/${id}`, { method: 'DELETE' });
   }
 
   async function getById(id) {
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`);
+      const res = await fetch(`${API_BASE}/${id}`);
       if (!res.ok) return null;
       return await res.json();
     } catch {
