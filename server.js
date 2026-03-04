@@ -13,6 +13,9 @@ app.use(express.json());
 // Serve static frontend files from current directory
 app.use(express.static(path.join(__dirname)));
 
+// Export Vercel serverless function
+module.exports = app;
+
 // Connect to MongoDB (Atlas in production, local for dev fallback)
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/crochetnook';
 mongoose.connect(MONGODB_URI)
