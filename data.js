@@ -6,9 +6,11 @@
 const DataService = (() => {
   const KEY = 'stitchcraft_items';
 
-  const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:5000/api/products'
-    : 'https://h-crochetnook.vercel.app/api/products';
+  // Detect environment (localhost port 5000 vs Netlify production/preview)
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168');
+  const API_BASE = isLocal && window.location.port !== '8888' // 8888 is default netlify dev port
+    ? 'http://' + window.location.hostname + ':5000/api/products' // Direct Express Server Local
+    : '/api/products'; // Netlify redirect handles this in production/netlify-dev
 
   const DEFAULT_ITEMS = [
     {
