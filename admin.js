@@ -70,8 +70,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemsSection.style.display = '';
                 renderItemsList();
             }
+
+            // Close mobile sidebar if open
+            if (window.innerWidth <= 768) {
+                adminSidebar.classList.remove('open');
+                adminOverlay.classList.remove('show');
+            }
         });
     });
+
+    // ─── MOBILE SIDEBAR ───────────────────────────────────────────────────────
+    const adminHamburger = document.getElementById('adminHamburger');
+    const adminSidebar = document.getElementById('adminSidebar');
+    const adminOverlay = document.getElementById('adminMobileOverlay');
+
+    if (adminHamburger && adminOverlay && adminSidebar) {
+        adminHamburger.addEventListener('click', () => {
+            adminSidebar.classList.add('open');
+            adminOverlay.classList.add('show');
+        });
+
+        adminOverlay.addEventListener('click', () => {
+            adminSidebar.classList.remove('open');
+            adminOverlay.classList.remove('show');
+        });
+    }
 
     // ─── TOAST ────────────────────────────────────────────────────────────────
     const toastEl = document.getElementById('toast');

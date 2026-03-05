@@ -71,9 +71,15 @@
 
             <!-- Top Bar -->
             <div class="admin-topbar">
-                <h1 id="sectionTitle">Dashboard</h1>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="admin-hamburger" id="adminHamburger" aria-label="Toggle admin menu">☰</button>
+                    <h1 id="sectionTitle">Dashboard</h1>
+                </div>
                 <a href="index.html" class="btn-admin" target="_blank">← Preview Site</a>
             </div>
+
+            <!-- Mobile Overlay -->
+            <div class="admin-mobile-overlay" id="adminMobileOverlay"></div>
 
             <!-- DASHBOARD SECTION -->
             <section id="dashboardSection">

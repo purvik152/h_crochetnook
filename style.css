@@ -1592,10 +1592,32 @@ button {
     border-bottom: 1px solid var(--clr-border);
 }
 
+.admin-hamburger {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--clr-brown);
+    cursor: pointer;
+}
+
 .admin-topbar h1 {
     font-family: var(--font-serif);
     color: var(--clr-brown);
     font-size: 1.6rem;
+}
+
+.admin-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 95;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+
+.admin-mobile-overlay.show {
+    opacity: 1;
+    pointer-events: all;
 }
 
 .admin-stats {
@@ -1771,7 +1793,6 @@ button {
     font-weight: 600;
     font-size: 0.92rem;
     color: var(--clr-dark);
-    truncate;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1902,6 +1923,14 @@ button {
         transform: translateX(0);
     }
 
+    .admin-hamburger {
+        display: block;
+    }
+
+    .admin-topbar {
+        padding-top: 0.5rem;
+    }
+
     .admin-main {
         margin-left: 0;
     }
@@ -1925,6 +1954,28 @@ button {
     .footer-inner {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .item-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .item-row-img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    .item-row-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .buy-btns {
+        flex-direction: column;
     }
 }
 
