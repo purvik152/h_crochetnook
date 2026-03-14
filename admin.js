@@ -391,17 +391,30 @@ document.addEventListener('DOMContentLoaded', () => {
             featured: itemFeat.checked
         };
 
-        if (editId.value) {
-            await DataService.updateItem(editId.value, data);
-            showToast('✅ Item updated successfully!');
-        } else {
-            await DataService.addItem(data);
-            showToast('✅ Item added successfully!');
-        }
+        const saveBtn = document.getElementById('saveBtn');
+        const originalBtnText = saveBtn.textContent;
+        saveBtn.disabled = true;
+        saveBtn.textContent = '⏳ Saving...';
+        showToast('⏳ Saving item...', 'success');
 
-        resetForm();
-        renderItemsList();
-        renderDashboard();
+        try {
+            if (editId.value) {
+                await DataService.updateItem(editId.value, data);
+                showToast('✅ Item updated successfully!');
+            } else {
+                await DataService.addItem(data);
+                showToast('✅ Item added successfully!');
+            }
+            resetForm();
+            renderItemsList();
+            renderDashboard();
+        } catch (err) {
+            console.error('Error saving item:', err);
+            showToast('❌ Error saving item. Check console for details.', 'error');
+        } finally {
+            saveBtn.disabled = false;
+            saveBtn.textContent = originalBtnText;
+        }
     });
 
     async function startEdit(id) {
