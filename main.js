@@ -308,11 +308,84 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('testiPrev').addEventListener('click', () => goTesti(testiIdx - 1));
     document.getElementById('testiNext').addEventListener('click', () => goTesti(testiIdx + 1));
 
-    // ─── INIT ──────────────────────────────────────────────────────────────────
-    buildFeaturedCarousel();
-    buildCategories();
-    buildFilterBar();
     renderProducts();
+
+    // ─── RIBBON CUTTING CEREMONY ──────────────────────────────────────────────
+    function initCeremony() {
+        let visits = parseInt(localStorage.getItem('h_ribbon_visits') || '0');
+        if (visits < 3) {
+            createCeremonyElements();
+            localStorage.setItem('h_ribbon_visits', (visits + 1).toString());
+        }
+    }
+
+    function createCeremonyElements() {
+        // Overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'ceremony-overlay';
+        overlay.innerHTML = `
+            <div class="ribbon-container">
+                <div class="ribbon-half ribbon-left">
+                    <span class="ribbon-text">h_crochetnook</span>
+                </div>
+                <div class="ribbon-half ribbon-right">
+                    <span class="ribbon-text">Ribbon-Cutting</span>
+                </div>
+                <button class="scissors-btn" id="cutRibbonBtn">✂️</button>
+            </div>
+            
+            <div class="congrats-modal" id="congratsModal">
+                <h2 class="congrats-title">Congratulations Hinesha! 🌸</h2>
+                <p class="congrats-msg">
+                    Your beautiful dream, <strong>h_crochetnook</strong>, is officially open! 🧶<br><br>
+                    Every loop you stitch and every knot you tie carries a piece of your heart. 
+                    Wishing you endless creativity and success on this wonderful journey.
+                </p>
+                <button class="congrats-btn" id="closeCongratsBtn">Start Exploring →</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const cutBtn = overlay.querySelector('#cutRibbonBtn');
+        const container = overlay.querySelector('.ribbon-container');
+        const modal = overlay.querySelector('#congratsModal');
+        const closeBtn = overlay.querySelector('#closeCongratsBtn');
+
+        cutBtn.addEventListener('click', () => {
+            container.classList.add('ribbon-cut');
+            cutBtn.style.display = 'none';
+            triggerConfetti();
+            
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 800);
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.add('fade-out');
+            setTimeout(() => overlay.remove(), 800);
+        });
+    }
+
+    function triggerConfetti() {
+        const colors = ['#e8796a', '#f5c6ba', '#f9e4d4', '#7a4e3a', '#ffffff'];
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.width = (Math.random() * 10 + 5) + 'px';
+            confetti.style.height = confetti.style.width;
+            confetti.style.animationDelay = (Math.random() * 2) + 's';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(confetti);
+            
+            // Remove after animation
+            setTimeout(() => confetti.remove(), 5000);
+        }
+    }
+
+    initCeremony();
 
     // Re-render when tab refocuses (so admin changes are reflected)
     window.addEventListener('focus', async () => {
