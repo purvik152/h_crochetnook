@@ -308,6 +308,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('testiPrev').addEventListener('click', () => goTesti(testiIdx - 1));
     document.getElementById('testiNext').addEventListener('click', () => goTesti(testiIdx + 1));
 
+    buildFeaturedCarousel();
+    buildCategories();
+    buildFilterBar();
     renderProducts();
 
     // ─── RIBBON CUTTING CEREMONY ──────────────────────────────────────────────
